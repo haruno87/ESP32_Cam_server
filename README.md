@@ -4,7 +4,7 @@
 
 # 项目运行效果
 
-客户端(电脑，平板)为CameraClinetServer中的html文件，服务端为CameraWebServer(单片机)
+客户端(电脑，平板)为CameraClinetServer中的html文件，服务端为CameraWebServer(单片机)。
 将代码烧录到单片机后，reset之后可以在串口监视器终端看见一行ip地址，使用链接在同一网络下的设备打开CameraClinetServer\ClinetServer.html如下图：
 
 ![1773664593936](image/README/1773664593936.png)
