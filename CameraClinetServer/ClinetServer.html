@@ -39,15 +39,15 @@
     </div>
 
     <div class="action-btns">
-        <button class="btn-photo" onclick="manualAction('photo')">📷 拍照保存</button>
+        <button class="btn-photo" onclick="manualAction('photo')"> 拍照保存</button>
         <button class="btn-stream" 
                 onmousedown="manualAction('stream_start')" 
                 onmouseup="manualAction('stream_stop')" 
                 onmouseleave="manualAction('stream_stop')"
                 ontouchstart="manualAction('stream_start'); event.preventDefault();" 
                 ontouchend="manualAction('stream_stop'); event.preventDefault();"
-                oncontextmenu="return false;">👁️ 长按预览</button>
-        <button class="btn-record" onclick="manualAction('record')">⏺️ 录制 15 秒</button>
+                oncontextmenu="return false;"> 长按预览</button>
+        <button class="btn-record" onclick="manualAction('record')"> 录制 15 秒</button>
     </div>
 
     <div id="streamContainer">
