@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32-P4 Camera Client</title>
+  <style>
+    :root {
+      --bg: #eef3f8;
+      --panel: #ffffff;
+      --panel-2: #f5f8fc;
+      --text: #243241;
+      --muted: #617283;
+      --primary: #1667d9;
+      --secondary: #6c7b8e;
+      --danger: #d9485f;
+      --success: #1f7a4d;
+      --border: #d7e0ea;
+      --shadow: 0 20px 60px rgba(18, 38, 63, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #edf4fa 0%, #e8eef5 100%);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: var(--panel);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    .hint {
+      margin-bottom: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .grow {
+      flex: 1 1 280px;
+    }
+
+    input[type="text"],
+    select,
+    input[type="range"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 13px;
+      font-size: 15px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    input[type="range"] {
+      padding: 0;
+      height: 42px;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 11px 18px;
+      min-height: 44px;
+      font-size: 15px;
+      cursor: pointer;
+      color: #fff;
+      background: var(--primary);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover {
+      opacity: 0.92;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    button.secondary {
+      background: var(--secondary);
+    }
+
+    button.danger {
+      background: var(--danger);
+    }
+
+    .status-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--panel-2);
+      color: var(--muted);
+    }
+
+    .status-bar strong {
+      color: var(--success);
+    }
+
+    .config-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--panel-2);
+    }
+
+    .card label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .value-line {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .preview-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+      background: #101215;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #videoStream {
+      width: 100%;
+      max-height: 72vh;
+      display: none;
+      background: #000;
+      transform: scale(var(--zoom-scale, 1));
+      transform-origin: center center;
+    }
+
+    #videoStream.fit {
+      object-fit: contain;
+    }
+
+    #videoStream.fill {
+      object-fit: cover;
+    }
+
+    #emptyState {
+      color: #cad3dc;
+      text-align: center;
+      padding: 48px 20px;
+      line-height: 1.7;
+    }
+
+    #log {
+      margin-top: 18px;
+      padding: 14px;
+      background: var(--panel-2);
+      border-radius: 14px;
+      min-height: 160px;
+      max-height: 280px;
+      overflow-y: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ESP32-P4 Camera Client</h1>
+    <div class="hint">
+      Open this HTML locally, enter the board IP, then click <b>Connect</b>. After that, board button events can trigger
+      preview, photo download, and 15-second video recording directly in the browser download folder.
+    </div>
+
+    <div class="row">
+      <div class="grow">
+        <input id="espHost" type="text" placeholder="Board IP, for example 192.168.219.245">
+      </div>
+      <button id="connectBtn" type="button">Connect</button>
+      <button id="refreshInfoBtn" class="secondary" type="button">Refresh Camera Info</button>
+      <button id="clearBtn" class="danger" type="button">Clear Log</button>
+    </div>
+
+    <div class="row">
+      <button id="previewBtn" type="button">Start Preview</button>
+      <button id="photoBtn" type="button">Capture Photo</button>
+      <button id="recordBtn" type="button">Record 15s Video</button>
+      <button id="stopBtn" class="secondary" type="button">Stop Preview</button>
+      <button id="applyBtn" class="secondary" type="button">Apply Camera Settings</button>
+    </div>
+
+    <div class="status-bar">
+      <div>Event channel: <strong id="wsStatus">Disconnected</strong></div>
+      <div>Camera: <span id="cameraSummary">Not loaded</span></div>
+      <div>Recording: <span id="recordStatus">Idle</span></div>
+    </div>
+
+    <div class="config-grid">
+      <div class="card">
+        <label for="formatSelect">Resolution / Format</label>
+        <select id="formatSelect"></select>
+        <div class="value-line" id="formatHint">Load camera info first</div>
+      </div>
+
+      <div class="card">
+        <label for="qualityRange">JPEG Quality</label>
+        <input id="qualityRange" type="range" min="10" max="63" step="1" value="53">
+        <div class="value-line" id="qualityValue">53</div>
+      </div>
+
+      <div class="card">
+        <label for="zoomRange">Preview Zoom</label>
+        <input id="zoomRange" type="range" min="100" max="300" step="10" value="100">
+        <div class="value-line" id="zoomValue">100%</div>
+      </div>
+
+      <div class="card">
+        <label for="displayMode">Display Mode</label>
+        <select id="displayMode">
+          <option value="fit">Fit</option>
+          <option value="fill">Fill</option>
+        </select>
+        <div class="value-line" id="displayHint">Fit keeps the full frame visible</div>
+      </div>
+    </div>
+
+    <div class="preview-wrap">
+      <img id="videoStream" class="fit" crossorigin="anonymous" alt="video stream">
+      <div id="emptyState">Preview is not running</div>
+    </div>
+
+    <canvas id="recordCanvas"></canvas>
+    <div id="log"></div>
+  </div>
+
+  <script>
+    const DEFAULT_RECORD_SECONDS = 15;
+    const DEFAULT_RECORD_FPS = 15;
+
+    let ws = null;
+    let isRecording = false;
+    let mediaRecorder = null;
+    let recordedChunks = [];
+    let drawInterval = null;
+    let previewReady = false;
+    let streamActive = false;
+    let currentPreviewHost = "";
+    let currentCamera = null;
+
+    const hostInput = document.getElementById("espHost");
+    const wsStatus = document.getElementById("wsStatus");
+    const cameraSummary = document.getElementById("cameraSummary");
+    const recordStatus = document.getElementById("recordStatus");
+    const logDiv = document.getElementById("log");
+    const videoStream = document.getElementById("videoStream");
+    const emptyState = document.getElementById("emptyState");
+    const canvas = document.getElementById("recordCanvas");
+    const ctx = canvas.getContext("2d");
+    const formatSelect = document.getElementById("formatSelect");
+    const formatHint = document.getElementById("formatHint");
+    const qualityRange = document.getElementById("qualityRange");
+    const qualityValue = document.getElementById("qualityValue");
+    const zoomRange = document.getElementById("zoomRange");
+    const zoomValue = document.getElementById("zoomValue");
+    const displayMode = document.getElementById("displayMode");
+
+    function addLog(message) {
+      const time = new Date().toLocaleTimeString();
+      const line = document.createElement("div");
+      line.textContent = `[${time}] ${message}`;
+      logDiv.appendChild(line);
+      logDiv.scrollTop = logDiv.scrollHeight;
+    }
+
+    function normalizeHost(rawValue) {
+      const trimmed = (rawValue || "").trim();
+      if (!trimmed) {
+        return "";
+      }
+
+      try {
+        const url = new URL(trimmed.includes("://") ? trimmed : `http://${trimmed}`);
+        return url.host;
+      } catch {
+        return "";
+      }
+    }
+
+    function getHost() {
+      const host = normalizeHost(hostInput.value);
+      if (!host) {
+        alert("Please enter a valid board IP address first.");
+        return "";
+      }
+
+      hostInput.value = host;
+      localStorage.setItem("esp32-p4-camera-host", host);
+      return host;
+    }
+
+    function getHttpBase() {
+      const host = getHost();
+      return host ? `http://${host}` : "";
+    }
+
+    function getWsUrl() {
+      const host = getHost();
+      return host ? `ws://${host}/ws` : "";
+    }
+
+    function getStreamUrl() {
+      const host = getHost();
+      return host ? `http://${host}:81/stream?_cb=${Date.now()}` : "";
+    }
+
+    function setStatus(text, connected) {
+      wsStatus.textContent = text;
+      wsStatus.style.color = connected ? "#1f7a4d" : "#bf4a4a";
+    }
+
+    function setRecordingStatus(text, active) {
+      recordStatus.textContent = text;
+      recordStatus.style.color = active ? "#d9485f" : "#617283";
+    }
+
+    function showPreview(visible) {
+      videoStream.style.display = visible ? "block" : "none";
+      emptyState.style.display = visible ? "none" : "block";
+    }
+
+    function updateZoom() {
+      const zoom = Number(zoomRange.value || "100") / 100;
+      videoStream.style.setProperty("--zoom-scale", String(zoom));
+      zoomValue.textContent = `${zoomRange.value}%`;
+    }
+
+    function updateDisplayMode() {
+      videoStream.classList.remove("fit", "fill");
+      videoStream.classList.add(displayMode.value === "fill" ? "fill" : "fit");
+    }
+
+    function stopPreview() {
+      streamActive = false;
+      previewReady = false;
+      currentPreviewHost = "";
+      videoStream.src = "";
+      showPreview(false);
+      addLog("Preview stopped");
+    }
+
+    async function fetchCameraInfo() {
+      const httpBase = getHttpBase();
+      if (!httpBase) {
+        return;
+      }
+
+      try {
+        const response = await fetch(`${httpBase}/api/get_camera_info?_cb=${Date.now()}`, { mode: "cors" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        const camera = data && data.cameras && data.cameras.length > 0 ? data.cameras[0] : null;
+        if (!camera) {
+          throw new Error("camera info is empty");
+        }
+
+        currentCamera = camera;
+        cameraSummary.textContent = `${camera.currentResolution.width}x${camera.currentResolution.height}, ${camera.currentFrameRate} fps, Q${camera.currentQuality ?? "-"}`;
+
+        formatSelect.innerHTML = "";
+        for (const format of camera.imageFormats) {
+          const option = document.createElement("option");
+          option.value = String(format.id);
+          option.textContent = format.description;
+          formatSelect.appendChild(option);
+        }
+        formatSelect.value = String(camera.currentImageFormat);
+        formatHint.textContent = camera.currentImageFormatDescription || "Current format loaded";
+
+        const selectedFormat = camera.imageFormats.find((item) => String(item.id) === String(camera.currentImageFormat));
+        const quality = typeof camera.currentQuality === "number" ? camera.currentQuality : 53;
+        const qualityMin = selectedFormat && selectedFormat.quality ? selectedFormat.quality.min : 10;
+        const qualityMax = selectedFormat && selectedFormat.quality ? selectedFormat.quality.max : 63;
+        const qualityStep = selectedFormat && selectedFormat.quality && selectedFormat.quality.step ? selectedFormat.quality.step : 1;
+
+        qualityRange.min = String(qualityMin);
+        qualityRange.max = String(qualityMax);
+        qualityRange.step = String(qualityStep);
+        qualityRange.value = String(quality);
+        qualityValue.textContent = String(quality);
+
+        addLog("Camera info updated");
+      } catch (error) {
+        addLog(`Failed to load camera info: ${error}`);
+      }
+    }
+
+    async function applyCameraSettings() {
+      const httpBase = getHttpBase();
+      if (!httpBase) {
+        return;
+      }
+      if (!currentCamera) {
+        addLog("Camera info is not loaded yet");
+        return;
+      }
+
+      const payload = JSON.stringify({
+        index: currentCamera.index,
+        image_format: formatSelect.value,
+        jpeg_quality: Number(qualityRange.value)
+      });
+
+      addLog("Applying camera settings");
+      try {
+        const response = await fetch(`${httpBase}/api/set_camera_config`, {
+          method: "POST",
+          mode: "cors",
+          body: payload
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        await fetchCameraInfo();
+        if (streamActive) {
+          await startPreview(true);
+        }
+        addLog("Camera settings saved");
+      } catch (error) {
+        addLog(`Failed to save camera settings: ${error}`);
+      }
+    }
+
+    function waitForPreviewReady(timeoutMs = 8000) {
+      return new Promise((resolve, reject) => {
+        if (previewReady || videoStream.naturalWidth > 0) {
+          previewReady = true;
+          resolve();
+          return;
+        }
+
+        const startedAt = Date.now();
+        const timer = setInterval(() => {
+          if (previewReady || videoStream.naturalWidth > 0) {
+            previewReady = true;
+            clearInterval(timer);
+            resolve();
+            return;
+          }
+
+          if (Date.now() - startedAt > timeoutMs) {
+            clearInterval(timer);
+            reject(new Error("Video stream is not ready yet"));
+          }
+        }, 120);
+      });
+    }
+
+    async function startPreview(forceReload = false) {
+      const host = getHost();
+      if (!host) {
+        return false;
+      }
+
+      if (!forceReload && streamActive && currentPreviewHost === host && videoStream.src) {
+        showPreview(true);
+        return true;
+      }
+
+      currentPreviewHost = host;
+      streamActive = true;
+      previewReady = false;
+      videoStream.src = getStreamUrl();
+      showPreview(true);
+      addLog("Preview stream requested");
+
+      try {
+        await waitForPreviewReady();
+        return true;
+      } catch (error) {
+        addLog(`Preview failed to become ready: ${error.message}`);
+        return false;
+      }
+    }
+
+    async function takePhoto() {
+      const httpBase = getHttpBase();
+      if (!httpBase) {
+        return;
+      }
+
+      addLog("Capturing photo");
+      try {
+        const response = await fetch(`${httpBase}/capture?_cb=${Date.now()}`, { mode: "cors" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `ESP32P4_Photo_${Date.now()}.jpg`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        addLog("Photo saved to the browser download folder");
+      } catch (error) {
+        addLog(`Photo capture failed: ${error}`);
+      }
+    }
+
+    function getRecorderMimeType() {
+      const candidates = [
+        "video/webm;codecs=vp9",
+        "video/webm;codecs=vp8",
+        "video/webm"
+      ];
+
+      for (const mimeType of candidates) {
+        if (window.MediaRecorder && MediaRecorder.isTypeSupported(mimeType)) {
+          return mimeType;
+        }
+      }
+
+      return "";
+    }
+
+    async function startRecording() {
+      if (isRecording) {
+        addLog("Recording is already running");
+        return;
+      }
+
+      if (!window.MediaRecorder) {
+        addLog("This browser does not support MediaRecorder");
+        return;
+      }
+
+      const previewOk = await startPreview(false);
+      if (!previewOk) {
+        addLog("Recording failed because preview is not ready");
+        return;
+      }
+
+      try {
+        await waitForPreviewReady();
+      } catch (error) {
+        addLog(`Recording failed: ${error.message}`);
+        return;
+      }
+
+      isRecording = true;
+      setRecordingStatus("Recording", true);
+      recordedChunks = [];
+
+      canvas.width = videoStream.naturalWidth || 800;
+      canvas.height = videoStream.naturalHeight || 600;
+      ctx.drawImage(videoStream, 0, 0, canvas.width, canvas.height);
+
+      drawInterval = setInterval(() => {
+        if (videoStream.naturalWidth > 0 && videoStream.naturalHeight > 0) {
+          ctx.drawImage(videoStream, 0, 0, canvas.width, canvas.height);
+        }
+      }, 1000 / DEFAULT_RECORD_FPS);
+
+      const canvasStream = canvas.captureStream(DEFAULT_RECORD_FPS);
+      const mimeType = getRecorderMimeType();
+      const options = mimeType ? { mimeType } : undefined;
+
+      try {
+        mediaRecorder = options ? new MediaRecorder(canvasStream, options) : new MediaRecorder(canvasStream);
+      } catch (error) {
+        clearInterval(drawInterval);
+        drawInterval = null;
+        isRecording = false;
+        setRecordingStatus("Idle", false);
+        addLog(`Failed to start MediaRecorder: ${error}`);
+        return;
+      }
+
+      addLog(`Recording started for ${DEFAULT_RECORD_SECONDS} seconds`);
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data && event.data.size > 0) {
+          recordedChunks.push(event.data);
+        }
+      };
+
+      mediaRecorder.onerror = (event) => {
+        addLog(`Recorder error: ${event.error ? event.error.message : "unknown error"}`);
+      };
+
+      mediaRecorder.onstop = () => {
+        if (drawInterval) {
+          clearInterval(drawInterval);
+          drawInterval = null;
+        }
+
+        isRecording = false;
+        setRecordingStatus("Idle", false);
+
+        if (recordedChunks.length === 0) {
+          addLog("Recording finished but no video data was captured");
+          return;
+        }
+
+        const finalMimeType = mimeType || "video/webm";
+        const blob = new Blob(recordedChunks, { type: finalMimeType });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `ESP32P4_Video_${Date.now()}.webm`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        addLog("Video saved to the browser download folder");
+      };
+
+      mediaRecorder.start(1000);
+
+      setTimeout(() => {
+        if (mediaRecorder && mediaRecorder.state === "recording") {
+          mediaRecorder.stop();
+        }
+      }, DEFAULT_RECORD_SECONDS * 1000);
+    }
+
+    function handleBoardEvent(command) {
+      addLog(`Board event: ${command}`);
+
+      if (command === "TAKE_PHOTO") {
+        takePhoto();
+      } else if (command === "STREAM_START") {
+        startPreview(false);
+      } else if (command === "RECORD_START") {
+        startRecording();
+      }
+    }
+
+    async function connectBoard() {
+      const wsUrl = getWsUrl();
+      if (!wsUrl) {
+        return;
+      }
+
+      if (ws) {
+        ws.close();
+        ws = null;
+      }
+
+      addLog(`Connecting event channel: ${wsUrl}`);
+      ws = new WebSocket(wsUrl);
+
+      ws.onopen = async () => {
+        setStatus("Connected", true);
+        addLog("Event channel connected");
+        await fetchCameraInfo();
+      };
+
+      ws.onclose = () => {
+        setStatus("Disconnected", false);
+        addLog("Event channel disconnected");
+      };
+
+      ws.onerror = () => {
+        setStatus("Connect failed", false);
+        addLog("Event channel connection failed");
+      };
+
+      ws.onmessage = (event) => {
+        handleBoardEvent(String(event.data || ""));
+      };
+    }
+
+    videoStream.onload = () => {
+      previewReady = true;
+      showPreview(true);
+      addLog(`Preview frame ready: ${videoStream.naturalWidth}x${videoStream.naturalHeight}`);
+    };
+
+    videoStream.onerror = () => {
+      previewReady = false;
+      addLog("Preview stream error");
+    };
+
+    qualityRange.addEventListener("input", () => {
+      qualityValue.textContent = qualityRange.value;
+    });
+
+    zoomRange.addEventListener("input", updateZoom);
+    displayMode.addEventListener("change", updateDisplayMode);
+
+    document.getElementById("connectBtn").addEventListener("click", connectBoard);
+    document.getElementById("refreshInfoBtn").addEventListener("click", fetchCameraInfo);
+    document.getElementById("previewBtn").addEventListener("click", () => startPreview(true));
+    document.getElementById("photoBtn").addEventListener("click", takePhoto);
+    document.getElementById("recordBtn").addEventListener("click", startRecording);
+    document.getElementById("stopBtn").addEventListener("click", stopPreview);
+    document.getElementById("applyBtn").addEventListener("click", applyCameraSettings);
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      logDiv.innerHTML = "";
+    });
+
+    window.addEventListener("beforeunload", () => {
+      if (ws) {
+        ws.close();
+      }
+    });
+
+    const savedHost = localStorage.getItem("esp32-p4-camera-host");
+    if (savedHost) {
+      hostInput.value = savedHost;
+    }
+
+    updateZoom();
+    updateDisplayMode();
+    setStatus("Disconnected", false);
+    setRecordingStatus("Idle", false);
+    addLog("Enter the board IP, then click Connect.");
+  </script>
+</body>
+</html>

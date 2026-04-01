@@ -1,0 +1,216 @@
+Command: ninja all
+[1/9] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\trwang\myProject\ESP32_P4_Cam\ESP_P4_CAM_Server\build\bootloader\esp-idf\esptool_py && C:\software\ESP32_IDF\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x2000 C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/build/bootloader/bootloader.bin"
+Bootloader binary size 0x5980 bytes. 0x680 bytes (7%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Completed 'bootloader'
+[4/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/simple_video_server_example.c.obj
+FAILED: esp-idf/main/CMakeFiles/__idf_main.dir/simple_video_server_example.c.obj 
+C:\software\ESP32_IDF\Espressif\tools\riscv32-esp-elf\esp-14.2.0_20260121\riscv32-esp-elf\bin\riscv32-esp-elf-gcc.exe -DESP_MDNS_VERSION_NUMBER=\"1.11.0\" -DESP_PLATFORM -DIDF_VER=\"v5.5.4\" -DMBEDTLS_CONFIG_FILE=\"mbedtls/esp_config.h\" -DSOC_MMU_PAGE_SIZE=CONFIG_MMU_PAGE_SIZE -DSOC_XTAL_FREQ_MHZ=CONFIG_XTAL_FREQ -DUNITY_INCLUDE_CONFIG_H -D_GLIBCXX_HAVE_POSIX_SEMAPHORE -D_GLIBCXX_USE_POSIX_SEMAPHORE -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/build/config -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/newlib/platform_include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/freertos/config/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/freertos/config/include/freertos -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/freertos/config/riscv/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/freertos/FreeRTOS-Kernel/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/freertos/FreeRTOS-Kernel/portable/riscv/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/freertos/FreeRTOS-Kernel/portable/riscv/include/freertos -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/freertos/esp_additions/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/include/soc -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/include/soc/esp32p4 -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/dma/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/ldo/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/debug_probe/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/mspi_timing_tuning/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/mspi_timing_tuning/tuning_scheme_impl/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/power_supply/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/port/esp32p4/. -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/port/esp32p4/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/port/esp32p4/private_include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/mspi_timing_tuning/port/esp32p4/. -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/heap/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/heap/tlsf -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/soc/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/soc/esp32p4 -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/soc/esp32p4/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/soc/esp32p4/register/hw_ver1 -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/hal/platform_port/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/hal/esp32p4/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/hal/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_rom/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_rom/esp32p4/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_rom/esp32p4/include/esp32p4 -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_rom/esp32p4 -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_common/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_system/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_system/port/soc -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_system/port/include/riscv -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_system/port/include/private -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/riscv/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/include/apps -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/include/apps/sntp -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/lwip/src/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/port/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/port/freertos/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/port/esp32xx/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/port/esp32xx/include/arch -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/port/esp32xx/include/sys -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_video/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_cam/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_cam/interface -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_cam/csi/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_cam/isp_dvp/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_cam/dvp/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_isp/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_mm/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_cam_sensor/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_cam_sensor/sensors/ov5647/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_cam_sensor/sensors/sc2336/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_sccb_intf/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_sccb_intf/interface -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_sccb_intf/sccb_i2c/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_i2c/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_gpio/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_ledc/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_spi/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_pm/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_parlio/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_wifi_remote/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_wifi_remote/idf_v5.5/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_event/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_netif/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__mdns/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/console -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/vfs/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_vfs_console/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/components/example_video_common/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/components/example_video_common/include/boards/esp32-p4-function-ev-board-v1.5 -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/examples/common_components/protocol_examples_common/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/mbedtls/port/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/mbedtls/mbedtls/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/mbedtls/mbedtls/library -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/mbedtls/esp_crt_bundle/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/mbedtls/mbedtls/3rdparty/everest/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/mbedtls/mbedtls/3rdparty/p256-m -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/mbedtls/mbedtls/3rdparty/p256-m/p256-m -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_app_format/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_bootloader_format/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/app_update/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/bootloader_support/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/bootloader_support/bootloader_flash/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_partition/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/efuse/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/efuse/esp32p4/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/spi_flash/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_security/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/pthread/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_timer/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_gptimer/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_ringbuf/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_psram/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_psram/xip_impl/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_uart/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/app_trace/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_usb_serial_jtag/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/nvs_flash/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/wpa_supplicant/esp_supplicant/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_coex/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_wifi_remote/idf_v5.5/include/injected -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_wifi/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_wifi/wifi_apps/nan_app/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_gdbstub/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/unity/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/unity/unity/src -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/cmock/CMock/src -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_pcnt/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_mcpwm/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_ana_cmpr/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_i2s/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/sdmmc/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_sdmmc/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_sdspi/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_sdio/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_dac/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_bitscrambler/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_rmt/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_tsens/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_sdm/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_twai/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/driver/deprecated -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/driver/i2c/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/driver/touch_sensor/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/driver/twai/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/http_parser -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp-tls -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp-tls/esp-tls-crypto -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_adc/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_adc/interface -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_adc/esp32p4/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_adc/deprecated/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_jpeg/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_ppa/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_touch_sens/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_driver_touch_sens/hw_ver3/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_eth/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hal_ieee802154/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hid/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/tcp_transport/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_http_client/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_http_server/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_https_ota/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_https_server/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_lcd/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_lcd/interface -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_lcd/rgb/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_lcd/dsi/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/protobuf-c/protobuf-c -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/protocomm/include/common -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/protocomm/include/security -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/protocomm/include/transports -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/protocomm/include/crypto/srp6a -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/protocomm/proto-c -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_local_ctrl/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/espcoredump/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/espcoredump/include/port/riscv -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/wear_levelling/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/fatfs/diskio -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/fatfs/src -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/fatfs/vfs -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/idf_test/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/idf_test/include/esp32p4 -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/ieee802154/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/json/cJSON -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/mqtt/esp-mqtt/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/nvs_sec_provider/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/rt/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/spiffs/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/usb/include -IC:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/wifi_provisioning/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_h264/interface/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_h264/sw/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_h264/port/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_h264/hw/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_ipa/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__usb_host_uvc/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_hosted/host -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_hosted/host/api/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_serial_slave_link/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__eppp_link/include -IC:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_new_jpeg/include @"C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/build/toolchain/cflags" -fdiagnostics-color=always -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-error=extra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fno-shrink-wrap -fmacro-prefix-map=C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server=. -fmacro-prefix-map=C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -std=gnu17 -Wno-old-style-declaration -DESP_VIDEO_VER_MAJOR=1 -DESP_VIDEO_VER_MINOR=4 -DESP_VIDEO_VER_PATCH=1 -DESP_CAM_SENSOR_VER_MAJOR=1 -DESP_CAM_SENSOR_VER_MINOR=7 -DESP_CAM_SENSOR_VER_PATCH=0 -DESP_IPA_VER_MAJOR=1 -DESP_IPA_VER_MINOR=3 -DESP_IPA_VER_PATCH=1 -MD -MT esp-idf/main/CMakeFiles/__idf_main.dir/simple_video_server_example.c.obj -MF esp-idf\main\CMakeFiles\__idf_main.dir\simple_video_server_example.c.obj.d -o esp-idf/main/CMakeFiles/__idf_main.dir/simple_video_server_example.c.obj -c C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c
+In file included from C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_video/include/linux/videodev2.h:62,
+                 from C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/components/example_video_common/include/example_video_common.h:9,
+                 from C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:32:
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_video/include/linux/ioctl.h:54:9: warning: "_IO" redefined
+   54 | #define _IO(type,nr)        _IOC(_IOC_NONE,(type),(nr),0)
+      |         ^~~
+In file included from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/include/lwip/sockets.h:8,
+                 from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/port/esp32xx/include/sys/socket.h:15,
+                 from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_http_client/include/esp_http_client.h:13,
+                 from C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:23:
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/lwip/src/include/lwip/sockets.h:419:9: note: this is the location of the previous definition
+  419 | #define _IO(x,y)        ((long)(IOC_VOID|((x)<<8)|(y)))
+      |         ^~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_video/include/linux/ioctl.h:55:9: warning: "_IOR" redefined
+   55 | #define _IOR(type,nr,size)  _IOC(_IOC_READ,(type),(nr),(_IOC_TYPECHECK(size)))
+      |         ^~~~
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/lwip/src/include/lwip/sockets.h:421:9: note: this is the location of the previous definition
+  421 | #define _IOR(x,y,t)     ((long)(IOC_OUT|((sizeof(t)&IOCPARM_MASK)<<16)|((x)<<8)|(y)))
+      |         ^~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_video/include/linux/ioctl.h:56:9: warning: "_IOW" redefined
+   56 | #define _IOW(type,nr,size)  _IOC(_IOC_WRITE,(type),(nr),(_IOC_TYPECHECK(size)))
+      |         ^~~~
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/lwip/src/include/lwip/sockets.h:423:9: note: this is the location of the previous definition
+  423 | #define _IOW(x,y,t)     ((long)(IOC_IN|((sizeof(t)&IOCPARM_MASK)<<16)|((x)<<8)|(y)))
+      |         ^~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c: In function 'broadcast_button_event':
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:267:5: error: unknown type name 'httpd_ws_frame_t'
+  267 |     httpd_ws_frame_t frame = {
+      |     ^~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:268:9: error: field name not in record or union initializer
+  268 |         .final = true,
+      |         ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:268:9: note: (near initialization for 'frame')
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:269:9: error: field name not in record or union initializer
+  269 |         .fragmented = false,
+      |         ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:269:9: note: (near initialization for 'frame')
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:269:23: warning: excess elements in scalar initializer
+  269 |         .fragmented = false,
+      |                       ^~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:269:23: note: (near initialization for 'frame')
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:270:9: error: field name not in record or union initializer
+  270 |         .type = HTTPD_WS_TYPE_TEXT,
+      |         ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:270:9: note: (near initialization for 'frame')
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:270:17: error: 'HTTPD_WS_TYPE_TEXT' undeclared (first use in this function); did you mean 'HTTPD_TYPE_TEXT'?
+  270 |         .type = HTTPD_WS_TYPE_TEXT,
+      |                 ^~~~~~~~~~~~~~~~~~
+      |                 HTTPD_TYPE_TEXT
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:270:17: note: each undeclared identifier is reported only once for each function it appears in
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:270:17: warning: excess elements in scalar initializer
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:270:17: note: (near initialization for 'frame')
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:271:9: error: field name not in record or union initializer
+  271 |         .payload = (uint8_t *)event_name,
+      |         ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:271:9: note: (near initialization for 'frame')
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:271:20: warning: excess elements in scalar initializer
+  271 |         .payload = (uint8_t *)event_name,
+      |                    ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:271:20: note: (near initialization for 'frame')
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:272:9: error: field name not in record or union initializer
+  272 |         .len = strlen(event_name),
+      |         ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:272:9: note: (near initialization for 'frame')
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:272:16: warning: excess elements in scalar initializer
+  272 |         .len = strlen(event_name),
+      |                ^~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:272:16: note: (near initialization for 'frame')
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:297:13: error: implicit declaration of function 'httpd_ws_get_fd_info' [-Wimplicit-function-declaration]
+  297 |         if (httpd_ws_get_fd_info(server, fds[i]) != HTTPD_WS_CLIENT_WEBSOCKET) {
+      |             ^~~~~~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:297:53: error: 'HTTPD_WS_CLIENT_WEBSOCKET' undeclared (first use in this function)
+  297 |         if (httpd_ws_get_fd_info(server, fds[i]) != HTTPD_WS_CLIENT_WEBSOCKET) {
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:302:13: error: implicit declaration of function 'httpd_ws_send_frame_async' [-Wimplicit-function-declaration]
+  302 |         if (httpd_ws_send_frame_async(server, fds[i], &frame) != ESP_OK) {
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c: In function 'button_event_ws_handler':
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1158:5: error: unknown type name 'httpd_ws_frame_t'
+ 1158 |     httpd_ws_frame_t ws_pkt = {0};
+      |     ^~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1159:21: error: implicit declaration of function 'httpd_ws_recv_frame' [-Wimplicit-function-declaration]
+ 1159 |     esp_err_t ret = httpd_ws_recv_frame(req, &ws_pkt, 0);
+      |                     ^~~~~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1165:15: error: request for member 'len' in something not a structure or union
+ 1165 |     if (ws_pkt.len > 0) {
+      |               ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1166:15: error: request for member 'payload' in something not a structure or union
+ 1166 |         ws_pkt.payload = calloc(1, ws_pkt.len + 1);
+      |               ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1166:42: error: request for member 'len' in something not a structure or union
+ 1166 |         ws_pkt.payload = calloc(1, ws_pkt.len + 1);
+      |                                          ^
+In file included from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_common/include/esp_err.h:13,
+                 from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/include/esp_intr_alloc.h:12,
+                 from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/include/esp_cpu.h:21,
+                 from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_hw_support/include/spinlock.h:11,
+                 from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/freertos/FreeRTOS-Kernel/portable/riscv/include/freertos/portmacro.h:65,
+                 from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/freertos/FreeRTOS-Kernel/include/freertos/portable.h:57,
+                 from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h:69,
+                 from C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:14:
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1167:35: error: request for member 'payload' in something not a structure or union
+ 1167 |         ESP_RETURN_ON_FALSE(ws_pkt.payload != NULL, ESP_ERR_NO_MEM, TAG, "failed to alloc ws payload");
+      |                                   ^
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_common/include/esp_compiler.h:31:25: note: in definition of macro 'unlikely'
+   31 | #define unlikely(x)    (x)
+      |                         ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1167:9: note: in expansion of macro 'ESP_RETURN_ON_FALSE'
+ 1167 |         ESP_RETURN_ON_FALSE(ws_pkt.payload != NULL, ESP_ERR_NO_MEM, TAG, "failed to alloc ws payload");
+      |         ^~~~~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1168:55: error: request for member 'len' in something not a structure or union
+ 1168 |         ret = httpd_ws_recv_frame(req, &ws_pkt, ws_pkt.len);
+      |                                                       ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1170:24: error: request for member 'payload' in something not a structure or union
+ 1170 |             free(ws_pkt.payload);
+      |                        ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1176:15: error: request for member 'type' in something not a structure or union
+ 1176 |     if (ws_pkt.type == HTTPD_WS_TYPE_CLOSE) {
+      |               ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1176:24: error: 'HTTPD_WS_TYPE_CLOSE' undeclared (first use in this function); did you mean 'HTTPD_TYPE_JSON'?
+ 1176 |     if (ws_pkt.type == HTTPD_WS_TYPE_CLOSE) {
+      |                        ^~~~~~~~~~~~~~~~~~~
+      |                        HTTPD_TYPE_JSON
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1178:22: error: request for member 'type' in something not a structure or union
+ 1178 |     } else if (ws_pkt.type == HTTPD_WS_TYPE_TEXT && ws_pkt.payload != NULL) {
+      |                      ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1178:31: error: 'HTTPD_WS_TYPE_TEXT' undeclared (first use in this function); did you mean 'HTTPD_TYPE_TEXT'?
+ 1178 |     } else if (ws_pkt.type == HTTPD_WS_TYPE_TEXT && ws_pkt.payload != NULL) {
+      |                               ^~~~~~~~~~~~~~~~~~
+      |                               HTTPD_TYPE_TEXT
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1178:59: error: request for member 'payload' in something not a structure or union
+ 1178 |     } else if (ws_pkt.type == HTTPD_WS_TYPE_TEXT && ws_pkt.payload != NULL) {
+      |                                                           ^
+In file included from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_common/include/esp_check.h:9,
+                 from C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:20:
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1179:69: error: request for member 'payload' in something not a structure or union
+ 1179 |         ESP_LOGI(TAG, "button event client says: %s", (char *)ws_pkt.payload);
+      |                                                                     ^
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include/esp_log.h:220:167: note: in definition of macro 'ESP_LOG_LEVEL'
+  220 |         if (ESP_LOG_GET_LEVEL(configs)==ESP_LOG_ERROR)        { esp_log(ESP_LOG_CONFIG_INIT(ESP_LOG_ERROR),   tag, LOG_FORMAT(E, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                                                                                                       ^~~~~~~~~~~
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include/esp_log.h:127:41: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  127 | #define ESP_LOGI(tag, format, ...) do { ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO, tag, format, ##__VA_ARGS__); } while(0)
+      |                                         ^~~~~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1179:9: note: in expansion of macro 'ESP_LOGI'
+ 1179 |         ESP_LOGI(TAG, "button event client says: %s", (char *)ws_pkt.payload);
+      |         ^~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1179:69: error: request for member 'payload' in something not a structure or union
+ 1179 |         ESP_LOGI(TAG, "button event client says: %s", (char *)ws_pkt.payload);
+      |                                                                     ^
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include/esp_log.h:221:167: note: in definition of macro 'ESP_LOG_LEVEL'
+  221 |         else if (ESP_LOG_GET_LEVEL(configs)==ESP_LOG_WARN)    { esp_log(ESP_LOG_CONFIG_INIT(ESP_LOG_WARN),    tag, LOG_FORMAT(W, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                                                                                                       ^~~~~~~~~~~
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include/esp_log.h:127:41: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  127 | #define ESP_LOGI(tag, format, ...) do { ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO, tag, format, ##__VA_ARGS__); } while(0)
+      |                                         ^~~~~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1179:9: note: in expansion of macro 'ESP_LOGI'
+ 1179 |         ESP_LOGI(TAG, "button event client says: %s", (char *)ws_pkt.payload);
+      |         ^~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1179:69: error: request for member 'payload' in something not a structure or union
+ 1179 |         ESP_LOGI(TAG, "button event client says: %s", (char *)ws_pkt.payload);
+      |                                                                     ^
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include/esp_log.h:222:167: note: in definition of macro 'ESP_LOG_LEVEL'
+  222 |         else if (ESP_LOG_GET_LEVEL(configs)==ESP_LOG_DEBUG)   { esp_log(ESP_LOG_CONFIG_INIT(ESP_LOG_DEBUG),   tag, LOG_FORMAT(D, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                                                                                                       ^~~~~~~~~~~
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include/esp_log.h:127:41: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  127 | #define ESP_LOGI(tag, format, ...) do { ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO, tag, format, ##__VA_ARGS__); } while(0)
+      |                                         ^~~~~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1179:9: note: in expansion of macro 'ESP_LOGI'
+ 1179 |         ESP_LOGI(TAG, "button event client says: %s", (char *)ws_pkt.payload);
+      |         ^~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1179:69: error: request for member 'payload' in something not a structure or union
+ 1179 |         ESP_LOGI(TAG, "button event client says: %s", (char *)ws_pkt.payload);
+      |                                                                     ^
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include/esp_log.h:223:167: note: in definition of macro 'ESP_LOG_LEVEL'
+  223 |         else if (ESP_LOG_GET_LEVEL(configs)==ESP_LOG_VERBOSE) { esp_log(ESP_LOG_CONFIG_INIT(ESP_LOG_VERBOSE), tag, LOG_FORMAT(V, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                                                                                                       ^~~~~~~~~~~
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include/esp_log.h:127:41: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  127 | #define ESP_LOGI(tag, format, ...) do { ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO, tag, format, ##__VA_ARGS__); } while(0)
+      |                                         ^~~~~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1179:9: note: in expansion of macro 'ESP_LOGI'
+ 1179 |         ESP_LOGI(TAG, "button event client says: %s", (char *)ws_pkt.payload);
+      |         ^~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1179:69: error: request for member 'payload' in something not a structure or union
+ 1179 |         ESP_LOGI(TAG, "button event client says: %s", (char *)ws_pkt.payload);
+      |                                                                     ^
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include/esp_log.h:224:167: note: in definition of macro 'ESP_LOG_LEVEL'
+  224 |         else                                                  { esp_log(ESP_LOG_CONFIG_INIT(ESP_LOG_INFO),    tag, LOG_FORMAT(I, format), esp_log_timestamp(), tag, ##__VA_ARGS__); } \
+      |                                                                                                                                                                       ^~~~~~~~~~~
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/log/include/esp_log.h:127:41: note: in expansion of macro 'ESP_LOG_LEVEL_LOCAL'
+  127 | #define ESP_LOGI(tag, format, ...) do { ESP_LOG_LEVEL_LOCAL(ESP_LOG_INFO, tag, format, ##__VA_ARGS__); } while(0)
+      |                                         ^~~~~~~~~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1179:9: note: in expansion of macro 'ESP_LOGI'
+ 1179 |         ESP_LOGI(TAG, "button event client says: %s", (char *)ws_pkt.payload);
+      |         ^~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1182:16: error: request for member 'payload' in something not a structure or union
+ 1182 |     free(ws_pkt.payload);
+      |                ^
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c: In function 'http_server_init':
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1716:10: error: 'httpd_uri_t' {aka 'struct httpd_uri'} has no member named 'is_websocket'
+ 1716 |         .is_websocket = true,
+      |          ^~~~~~~~~~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1716:25: warning: excess elements in struct initializer
+ 1716 |         .is_websocket = true,
+      |                         ^~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:1716:25: note: (near initialization for 'button_event_ws_uri')
+ninja: build stopped: subcommand failed.

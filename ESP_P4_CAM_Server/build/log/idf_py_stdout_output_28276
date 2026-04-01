@@ -1,0 +1,44 @@
+Command: ninja all
+[1/9] Performing build step for 'bootloader'
+[1/1] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\trwang\myProject\ESP32_P4_Cam\ESP_P4_CAM_Server\build\bootloader\esp-idf\esptool_py && C:\software\ESP32_IDF\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x2000 C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/build/bootloader/bootloader.bin"
+Bootloader binary size 0x5980 bytes. 0x680 bytes (7%) free.
+[2/9] No install step for 'bootloader'
+[3/9] Completed 'bootloader'
+[4/9] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/simple_video_server_example.c.obj
+In file included from C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_video/include/linux/videodev2.h:62,
+                 from C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/components/example_video_common/include/example_video_common.h:9,
+                 from C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:32:
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_video/include/linux/ioctl.h:54:9: warning: "_IO" redefined
+   54 | #define _IO(type,nr)        _IOC(_IOC_NONE,(type),(nr),0)
+      |         ^~~
+In file included from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/include/lwip/sockets.h:8,
+                 from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/port/esp32xx/include/sys/socket.h:15,
+                 from C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/esp_http_client/include/esp_http_client.h:13,
+                 from C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/main/simple_video_server_example.c:23:
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/lwip/src/include/lwip/sockets.h:419:9: note: this is the location of the previous definition
+  419 | #define _IO(x,y)        ((long)(IOC_VOID|((x)<<8)|(y)))
+      |         ^~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_video/include/linux/ioctl.h:55:9: warning: "_IOR" redefined
+   55 | #define _IOR(type,nr,size)  _IOC(_IOC_READ,(type),(nr),(_IOC_TYPECHECK(size)))
+      |         ^~~~
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/lwip/src/include/lwip/sockets.h:421:9: note: this is the location of the previous definition
+  421 | #define _IOR(x,y,t)     ((long)(IOC_OUT|((sizeof(t)&IOCPARM_MASK)<<16)|((x)<<8)|(y)))
+      |         ^~~~
+C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/managed_components/espressif__esp_video/include/linux/ioctl.h:56:9: warning: "_IOW" redefined
+   56 | #define _IOW(type,nr,size)  _IOC(_IOC_WRITE,(type),(nr),(_IOC_TYPECHECK(size)))
+      |         ^~~~
+C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/lwip/lwip/src/include/lwip/sockets.h:423:9: note: this is the location of the previous definition
+  423 | #define _IOW(x,y,t)     ((long)(IOC_IN|((sizeof(t)&IOCPARM_MASK)<<16)|((x)<<8)|(y)))
+      |         ^~~~
+[5/9] Linking C static library esp-idf\main\libmain.a
+[6/9] Generating esp-idf/esp_system/ld/sections.ld
+[7/9] Linking CXX executable ESP_P4_CAM_Server.elf
+[8/9] Generating binary image from built executable
+esptool.py v4.12.dev1
+Creating esp32p4 image...
+Merged 3 ELF sections
+Successfully created esp32p4 image.
+Generated C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/build/ESP_P4_CAM_Server.bin
+[9/9] C:\WINDOWS\system32\cmd.exe /C "cd /D C:\trwang\myProject\ESP32_P4_Cam\ESP_P4_CAM_Server\build\esp-idf\esptool_py && C:\software\ESP32_IDF\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:/software/ESP32_IDF/Espressif/frameworks/esp-idf-v5.5.4/components/partition_table/check_sizes.py --offset 0x8000 partition --type app C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/build/partition_table/partition-table.bin C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/build/ESP_P4_CAM_Server.bin"
+ESP_P4_CAM_Server.bin binary size 0x1694a0 bytes. Smallest app partition is 0x177000 bytes. 0xdb60 bytes (4%) free.
+Warning: The smallest app partition is nearly full (4% free space left)!

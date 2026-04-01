@@ -1,0 +1,2 @@
+source C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/build/bootloader/gdbinit/symbols
+source C:/trwang/myProject/ESP32_P4_Cam/ESP_P4_CAM_Server/build/bootloader/gdbinit/connect
